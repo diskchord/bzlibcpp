@@ -1,7 +1,6 @@
 # BZLibC++ Classic
 
-> A lightweight C++98 toolkit (2005 – 2006) for procedurally generating **BZW** map files used by the open-source tank game **BZFlag**.  
-> This is the original, historically preserved codebase.
+A lightweight C++98 toolkit (2005 – 2006) for procedurally generating **BZW** map files used by the open-source tank game **BZFlag**. This is the original, historically preserved codebase.
 
 ---
 
@@ -19,11 +18,10 @@
 
 ## 📂 Repository Layout
 bzlibcpp/
-├── src/ ← core library headers & sources
-├── examples/ ← minimal demo programs
-├── docs/ ← legacy text documentation
-├── configure ← Autotools script (gcc 3.x era)
-└── Makefile.in ← classic Makefile template
+ src/ ← core library headers & sources
+ examples/ ← minimal demo programs
+ docs/ ← legacy text documentation
+ makefile ← classic Makefile template
 
 ---
 
