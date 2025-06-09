@@ -17,11 +17,13 @@ A lightweight C++98 toolkit (2005 – 2006) for procedurally generating **BZW** 
 ---
 
 ## 📂 Repository Layout
+```
 bzlibcpp/
- src/ ← core library headers & sources
- examples/ ← minimal demo programs
- docs/ ← legacy text documentation
- makefile ← classic Makefile template
+  src/ ← core library headers & sources
+  examples/ ← minimal demo programs
+  docs/ ← legacy text documentation
+  makefile ← classic Makefile template
+```
 
 ---
 
