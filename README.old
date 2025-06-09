@@ -1,0 +1,50 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+README
+===============================================================================
+
+UPDATE 2026 — This is a library that I wrote nearly 20 years ago. I'm now
+uploading it to the internet in case anybody else finds it useful, and
+because I have very fond memories of it! Perhaps at some point I'll update it
+to a more modern implementation, or add Python bindings. If anybody wants to
+take on this project, that'd be great!
+
+-------------------------------------------------------------------------------
+1 | Overview
+-------------------------------------------------------------------------------
+BZLibC++ is a development library for BZFlag maps based in C++.
+
+BZLib is intended to create smaller, more effective maps than other libraries 
+and accomplishes this desire well. Even maps with 3000 or more objects stay 
+under 300 kilobytes, which is compressed wonderfully by BZFlag. Other 
+libraries produce maps that, with that many objects, would be on the order of 
+5 megabytes.
+
+BZLib also is intended to simplify the process of map making. BZLib will, 
+except when turned off, give you advice about what you should and shouldn't do, 
+and what might cause issues on some clients.
+
+And lastly, it must do all this FAST. BZLibC++ is used in several scripts for
+server reboots where speed is extremely necessary. On a 1GHz AMD machine,
+1500 object maps will be generated in 2/5 of a second. What if your server
+machine isn't very fast? My 266MHz server managed the 1500 map in a mere 3
+seconds. BZLibC++ requires very little memory and uses only the most tested
+and efficient algorithms.
+
+	http://bzserve.no-ip.org/~bzlib
+
+-------------------------------------------------------------------------------
+2 | Installation
+-------------------------------------------------------------------------------
+Please review INSTALL in the current directory.
+
+-------------------------------------------------------------------------------
+3 | Using the Library
+-------------------------------------------------------------------------------
+Please review docs/using for more information.

@@ -1,0 +1,63 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+docs/install/djgpp.txt
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | Overview
+-------------------------------------------------------------------------------
+BZLibC++ was not build for Windows, and there will probably be some
+difficulties when you try to install it. This file outlines my personal
+experience installing this library for DJGPP on a Windows system.
+
+-------------------------------------------------------------------------------
+2 | Changing what Needs to be Changed
+-------------------------------------------------------------------------------
+You will need to change three files. Here's what you have to do:
+
+	in BZLibC++\makefile
+	replace
+		GCCCALL = g++
+	with
+		GCCCALL = gxx
+	
+	in BZLibC++\src\makefile
+	replace
+		GCCCALL = g++
+	with
+		GCCCALL = gxx
+
+	in djgppinstall.txt
+	replace
+		set DJGPPPATH=C:\\DJGPP
+	with
+		set DJGPPPATH=[whereEverItIsYouStoreDJGPP]
+
+-------------------------------------------------------------------------------
+3 | Compiling the Library
+-------------------------------------------------------------------------------
+Run djgppinstall.bat. It will call the "make" utility for you, and will then
+do the fine tuning typically done with "make install" which is not compatible
+with Windows.
+
+-------------------------------------------------------------------------------
+4 | Installing Examples
+------------------------------------------------------------------------------
+Execute the command
+
+	make examples
+
+This places all of the map files in the "maps" directory at the root of this
+project. Installing the examples is an excellent way of testing the library.
+
+-------------------------------------------------------------------------------
+5 | Updating
+-------------------------------------------------------------------------------
+The process for updating is exactly the same as standard installation. The
+files just overwrite.

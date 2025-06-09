@@ -1,0 +1,60 @@
+{
+
+	Old Version: 1.0.0
+	New Version: 1.0.1
+	Changes: 
+
+o	Fixed material related bugs.
+
+o	Added a vast number of different "color"
+	related functions.
+
+o	Added a great deal of documentation.
+
+
+}
+
+{
+
+	Old Version: 1.0.1
+	New Version: 1.0.2b1
+
+o	Removed all vast arrays I was using to
+	store object information and replaced
+	them with vectors. HUGE speed increase.
+
+}
+
+{
+	
+	Old Version: 1.0.2b1
+	New Version: 1.0.2b2
+
+o	Added all of my examples and their
+	documentation.
+
+}
+
+{
+
+	Old Version: 1.0.2b2
+	New Version: 1.0.2
+	Changes:
+
+o	Changed from "collection of header files"
+	format to an actual library.
+
+o	Added a heck of a lot more documentation.
+
+o	Created the DJGPP installer.
+
+}
+
+{
+
+	Old Version: 1.0.2
+	New Version: 1.0.3b1
+
+o	Changed to CVS format.
+
+}

@@ -1,0 +1,98 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+INSTALL
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | UNIX based systems
+-------------------------------------------------------------------------------
+docs/install/unix.txt for full instructions.
+For a list of common issues, continue to the FAQ/ALL or FAQ/UNIX.
+
+-------------------------------------------------------------------------------
+2 | DJGPP for Windows/DOS
+-------------------------------------------------------------------------------
+docs/install/djgpp.txt
+If you have difficulty, please keep in mind that this was build for UNIX based
+systems. For a list of common issues, continue to the FAQ/ALL or FAQ/DJGPP.
+
+-------------------------------------------------------------------------------
+3 | CYGWIN for Windows/DOS
+-------------------------------------------------------------------------------
+docs/install/cygwin.txt
+For a list of common issues, continue to the FAQ/ALL or FAQ/CYGWIN
+
+-------------------------------------------------------------------------------
+A | FAQ/ALL; Issues Common to All Operating Systems
+-------------------------------------------------------------------------------
+Q. Why don't you do "./configure", "make", and "make install" like all the
+   normal people I know?
+A. I will someday when I get brave enough to make a ./configure script. For
+   the most part, it isn't necessary, since all BZLibC++ needs is a working
+   C++ compiler and the ar utility, and ar comes with, as far as I know, all
+   UNIX-based systems.
+
+Q. When I try to compile maps, BZLibC++ crashes and burns awful. I can't even
+   scroll far enough to the top to see the first bunch of error messages.
+A1.You forgot to do "chmod -R 755 /usr/include", didn't you? If you didn't
+   forget, you should probably email me and give a more thorough description.
+A2.You forgot to include the library call. Remember that you MUST include
+   the -lbzl switch at the end of the compiler call, e.g. g++ mymap.cpp -lbzl
+A3.This has two other causes, one under FAQ/UNIX and one under FAQ/DJGPP.
+
+Q. Why do I keep getting "last.txt: no file or directory" or some mutant
+   of that error?
+A. last.txt stores your last header file install location for the makefile.
+   If you delete or lose last.txt, you can make a new one by placing the path, and
+   the path ONLY, of the last place you installed it. If this is your first
+   install, then run lastgen.sh. If you want to know where the last place you
+   installed it is, but you didn't keep track before, open up src/bzlib.h and
+   check the DIRECTORY constant's value. Exclude quotation marks when you put
+   the path in last.txt.
+
+Q. I keep getting weird errors involving bzlib.h. I open the file and it's
+   completely empty. How do I fix that?
+A. Run rescuebzlib.sh, which copies a BZLib.h spare over the old one. This
+   scenerio usually happens after errors with the last.txt file, so make
+   sure that file exists and shows a valid location. By default, lastgen.sh
+   will run rescuebzlib.sh.
+
+Q. I don't want lastgen.sh messing around with BZLibC++, I just want it to
+   make a last.txt!
+A. Run lastgen.sh with the argument "norescue" like this:
+	./lastgen.sh norescue
+
+Q. I'm sick of BZLib whining to me about how my map has too many flags, too
+   much rain, or anything like that. How do I make it stop?
+A. Recompile BZLibC++ with "#define DO_NOT_WATCH_FOR_BZFLAG_BUGS" in bzlib.h.
+   More thorough instructions exist under docs/install/usingdefs.h.
+
+-------------------------------------------------------------------------------
+B | FAQ/UNIX; Issues Specific to the UNIX-Based Install
+-------------------------------------------------------------------------------
+Q. When I try to compile maps, BZLibC++ crashes and burns awful. I can't even
+   scroll far enough to the top to see the first bunch of error messages.
+A. Run "make install" again, and this time be on the lookout for error
+   messages. It may be the case that "last.txt" isn't found, in which case
+   you must use lastgen.sh to regenerate the last.txt file. In all probability,
+   you will have lost bzlib.h because of this, and so be sure not to run
+   lastgen.sh with the norescue argument.
+
+-------------------------------------------------------------------------------
+C | FAQ/DJGPP; Issues Specific to the DJGPP Install
+-------------------------------------------------------------------------------
+Q. When I try to compile maps, BZLibC++ crashes and burns awful. I can't even
+   scroll far enough to the top to see the first bunch of error messages.
+A. Does djgppinstall.bat fail at all? Make sure your path to DJGPP in the
+   said file is correct. Remember, to the ROOT directory of DJGPP, such 
+   as "C:\\DJGPP". You MUST double the slashes.
+
+-------------------------------------------------------------------------------
+D | FAQ/Cygwin; Issues Specific to the Cygwin Install
+-------------------------------------------------------------------------------

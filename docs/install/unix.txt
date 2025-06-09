@@ -1,0 +1,88 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+docs/install/unix.txt
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | Overview
+-------------------------------------------------------------------------------
+This installation process for BZLib C++ is quite simple. BZLib C++ requires
+almost no libraries, other than an elementary C++ compiler, and the
+installation is therefore extremely simple. The installation will require
+root access.
+
+-------------------------------------------------------------------------------
+2 | Installing the library
+-------------------------------------------------------------------------------
+Navigate to the root directory of the BZLib collection. First you must compile
+the class files. This is done easily with the "make" command. 
+		
+	make
+
+Please sit back and relax while BZLibC++ compiles, which can be a slow process 
+on 266MHz machines like the ones I'm used to installing it on.
+
+Now, to install BZLib for global use, all you have to do is type
+	
+	make install
+
+Now, this is all good, but you may want to change some settings. By default, 
+BZLib installs to the /usr/include directory. To make it install to another
+directory, type
+
+	make install INCDIR=/path/to/directory/you/want
+
+You may also wish to have the .a library file installed to another location.
+Again, by default, BZLibC++ chooses to install it to /usr/lib. To change
+that, type
+
+	make install LIBDIR=/path/to/directory/you/want
+
+Lastly, BZLibC++, by default, is named libbzl.a. If you want another name
+because of a name conflict or some other reason, type
+
+	make install LIBNAME=nameyouwant
+
+Remember to exclude the .a extension. It will be necessary to start the
+name with a "lib" yourself, the default being "libbzl".
+
+Remember that to use a C++ library, you must include -l[nameOfLibrary] on the
+call to the compiler. For example:
+
+	g++ myCoolMap.cpp -lbzl
+
+If you had any errors during the install, turn to the FAQ in the INSTALL file
+in the root directory of BZLibC++.
+
+-------------------------------------------------------------------------------
+3 | Giving Access to Non-Root Users
+-------------------------------------------------------------------------------
+If you want non-root users to use BZLibC++, you may have to do
+
+	chmod -R 755 /usr/include/
+	chmod -R 755 /usr/lib/
+
+Although this is now done automatically by the "make install" script. Don't
+be frightened, "make" does the chmods specifically to the BZLib files.
+
+-------------------------------------------------------------------------------
+4 | Installing Examples
+-------------------------------------------------------------------------------
+Again, this is pretty easy. All you have to do is execute
+
+	make examples
+
+This places all of the map files in the "maps" directory at the root of this
+project. Installing the examples is an excellent way of testing the library.
+
+-------------------------------------------------------------------------------
+5 | Updating
+-------------------------------------------------------------------------------
+The process for updating is exactly the same as standard installation. The
+files just overwrite.

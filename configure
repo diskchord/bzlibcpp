@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo Please use \'make\' to compile this library, and \'make install\' to install.

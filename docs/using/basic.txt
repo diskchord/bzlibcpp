@@ -1,0 +1,192 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+docs/using/basic.txt
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | Initializing your world and add settings
+-------------------------------------------------------------------------------
+The first step to using the BZLibC++ library is to add the include file.
+
+	#include "bzlib.h"
+
+BZLibC++ will declare a world object for you and initialize it. Now, you may
+want to specify some settings, some options, or maybe the ground color or 
+texture. Review world commands for a list.
+
+Under nearly all circumstances you will probably want to, at some point,
+call the 'world.setFileName( "[nameoffile]" );' function. By default, it
+will output to map.bzw.
+
+-------------------------------------------------------------------------------
+2 | Making your first object
+-------------------------------------------------------------------------------
+Let's make your first object a nifty one. I propose making a box with
+a mirror-like surface. Here is the entire contents of mirrorbox.cpp (which
+is also under examples):
+
+	#include "bzlib.h"
+
+	int main()
+	{
+        	world.setFileName( "mirrorcube.bzw" );
+
+	        Point p1 = Point( -10, -10, 10 );
+        	Point p2 = Point( 10, 10, 30 );
+
+	        Box mirrorCube( p1, p2 );
+        	mirrorCube.setTexture( "mountain1" );
+	        mirrorCube.addSphereMap();
+	        mirrorCube.Make();
+
+	        return 0;
+	}
+
+To compile the program, you MUST include the -lbzl library call at the end.
+An example compilation command would be
+
+	g++ mirrorcube.cpp -o mirrorcube -lbzl
+
+Compile and run. The resulting file, mirrorcube.bzw, can be run easily with
+bzfs. Now, to go through the file step by step.
+
+	Point p1 = Point( -10, -10, 10 );
+	Point p2 = Point( 10, 10, 30 );
+
+These two lines define two points. The points are assigned values in the format
+(x, y, z). The ways to assign values to points are as follows:
+
+	Point p = Point( 0, 0, 0 ); 	//Clear.
+
+or
+
+	Point p( 0, 0, 0 );		//Not as clear.
+
+or
+
+	p = Point( 0, 0, 0 );		//Clear for redefines.
+
+or
+	
+	p( 0, 0, 0 );			//Not as clear for redefines.
+
+The next line
+       
+	Box mirrorCube( p1, p2 );
+
+defines a Box object which is to be named mirrorCube. It assigns the bounding
+points p1 and p2 to the box. Another way to do this would have been
+
+	Box mirrorCube;
+	mirrorCube.setLocation( p1, p2 );
+
+but this is not as preferable (for me, at least).
+
+	mirrorCube.setTexture( "mountain1" );
+
+Sets the texture of the cube to "mountain1". You may use any texture you have
+in your BZFlag data directory. You may also assign remote textures like this:
+
+	mirrorCube.setTexture( "http://perso.wanadoo.fr/fcys14/Image/google.png" );
+
+The next line adds spheremap to the object, which adds a cool metallic/mirror
+effect to the object:
+
+	mirrorCube.addSphereMap();
+
+And, finally, we insert the object into the map file.
+
+	mirrorCube.Make();
+
+As you can see, this is significantly easier than hand-coding it in the raw
+format, and we haven't even started using loops.
+
+-------------------------------------------------------------------------------
+A | World commands
+-------------------------------------------------------------------------------
+	
+/* Note: BZLib does not check for duplicate ground materials. */
+
+void addFlag( std::string, int, int );
+//Precondition:  none
+//Function:      Adds a flag to the options variable. Requests max
+//               number of shots.
+
+void addFlag( std::string, int );
+//Precondition:  none
+//Function:      Adds a flag to the options variable.
+
+void setGroundColor( double, double, double );
+//Precondition:  none
+//Function:      Sets the groundColor variable.
+
+void setWaterLevel( double );
+//Precondition:  none
+//Function:      Sets the waterLevel variable.
+
+void addOption( std::string );
+//Precondition:  none
+//Function:      Adds to the options variable.
+
+void addSetting( std::string );
+//Precondition:  none
+//Function:      Adds a setting to the options variable.
+
+void addRain( std::string type, std::string texture, int density );
+//Precondition:  none
+//Function:      Adds rain.
+
+void addMessage( std::string, std::string );
+//Precondition:  none
+//Function:      Adds srvmsg or admsg to the options variable.
+
+void setFileName( std::string );
+//Precondition:  none
+//Function:      Sets the filename that the map will be written to.
+
+void addHelp( std::string, std::string );
+//Precondition:  none
+//Function:      Adds a page to help.
+
+void setGroundColor( double, double, double );
+//Precondition:  none
+//Function:      Sets the groundColor variable.
+
+void setWaterLevel( double );
+//Precondition:  none
+//Function:      Sets the waterLevel variable.
+
+void addOption( std::string );
+//Precondition:  none
+//Function:      Adds to the options variable.
+
+void addSetting( std::string );
+//Precondition:  none
+//Function:      Adds a setting to the options variable.
+
+void addRain( std::string type, std::string texture, int density );
+//Precondition:  none
+//Function:      Adds rain.
+
+void addMessage( std::string, std::string );
+//Precondition:  none
+//Function:      Adds srvmsg or admsg to the options variable.
+
+void setFileName( std::string );
+//Precondition:  none
+//Function:      Sets the filename that the map will be written to.
+
+void addHelp( std::string, std::string );
+//Precondition:  none
+//Function:      Adds a page to help.
+
+int Make();
+//Precondition:  none
+//Function:      Adds the world. Also adds any drivers, materials,
+//               or dynamic colors that the objects in the world need.

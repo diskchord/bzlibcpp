@@ -1,0 +1,31 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+docs/using/usingdefs.txt
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | Overview
+-------------------------------------------------------------------------------
+BZLibC++ includes a variety of customizable features, a number of which are
+activated with definitions.
+
+To use a definition, just add "#define [definition]" to the top of bzlib.h.
+
+-------------------------------------------------------------------------------
+2 | List of Globals
+-------------------------------------------------------------------------------
+
+#define DO_NOT_WATCH_FOR_BZFLAG_BUGS
+//By default, BZLib attempts to prevent you from doing such things as adding
+//too many flags (which will cause BZFS to crash) and similiar things.
+//Adding this #define will prevent it from whining about these things.
+
+#define RUNTIME_OUTPUT
+//The compiler will display things like how large the file is (in kilobytes)
+//during the runtime. 

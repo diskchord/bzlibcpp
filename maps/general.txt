@@ -1,0 +1,4 @@
+=== GENERAL ===================================================================
+This map is based on real life lasertag, only it uses tanks. All flags are
+lasers and there isn't any radar. Good for being sneaky.
+===============================================================================

@@ -1,0 +1,49 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+docs/using/sidespecific.txt
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | Overview
+-------------------------------------------------------------------------------
+Side-specific operations include assigning colors to a specific side, assigning
+dynamic textures to a specific side, and several other features. You cannot,
+however, assign non-cosmetic features to a side such as physics.
+
+-------------------------------------------------------------------------------
+2 | How it Works
+-------------------------------------------------------------------------------
+When you say you want to do something side specificly, you ultimate are just
+telling BZLibC++ to make one side use a different material than the others.
+
+-------------------------------------------------------------------------------
+3 | Using Face
+-------------------------------------------------------------------------------
+A "Face" is essentially an object that has all the same features as a normal
+object, BUT cannot be "Make()"ed. A Face will be "assigned" to a particular
+side of an object. Here's an example.
+
+Face topFace;
+topFace.setColor( 1, 0, 0 );
+topFace.addSphereMap();
+
+Box myBox( Point( -10, -10, 0 ), Point( 10, 10, 20 ) );
+myBox.setSide( TOP, topFace );
+myBox.Make();
+
+As you can see, the Face is never "Make()"ed, but it is assigned to one of the
+object's sides with the "setSide()" function. In this example, it is set to
+the "TOP" side. Here are your options:
+
+TOP
+BOTTOM
+STARTSIDE
+ENDSIDE
+INSIDE
+OUTSIDE

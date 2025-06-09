@@ -1,0 +1,76 @@
+===============================================================================
+ ____ _______      _ _
+|  _ \___  / |    (_) |     _____
+| |_) | / /| |     _| |__  / ____|     _
+|  _ < / / | |    | | '_ \| |  _| |_ _| |_
+| |_) / /__| |____| | |_) | | |_   _|_   _|
+|____/_____|______|_|_.__/| |___|_|   |_|
+                           \_____|
+docs/using/groups.txt
+===============================================================================
+
+-------------------------------------------------------------------------------
+1 | Overview
+-------------------------------------------------------------------------------
+Groups are used to link together a group of objects. They allow you to perform
+functions on a group of objects as a whole, such as changing all the objects
+in a group to a particular color, or resizing them all at once. BZLibC++
+has support for groups, and they are easy to use.
+
+-------------------------------------------------------------------------------
+2 | How it Works
+-------------------------------------------------------------------------------
+BZLibC++ operates groups much like a record function. Basically, you call the
+startGroup() member function of a group to say you want to start recording.
+When you're done, you say endGroup(). You now have a recording of the objects
+you made in between the two calls, and may perform functions on them as a
+whole.
+
+-------------------------------------------------------------------------------
+2.1 | A Basic Group
+-------------------------------------------------------------------------------
+Group myNewGroup;
+myNewGroup.startGroup();
+
+Box newBox( Point( -10, -10, 0 ), Point ( 10, 10, 20 ) );
+newBox.Make();
+
+Box anotherNewBox( Point( -10, -10, 30 ), Point( 10, 10, 50 ) );
+anotherNewBox.Make();
+
+myNewGroup.endGroup();
+myNewGroup.setTint( 1, 0, 0 );
+myNewGroup.Make();
+
+-------------------------------------------------------------------------------
+2.2 | Walkthrough of Example
+-------------------------------------------------------------------------------
+"Group myNewGroup;"
+
+I declare a new group.
+
+"myNewGroup.startGroup();"
+
+I begin "recording" my objects.
+
+"Box newBox( Point( -10, -10, 0 ), Point ( 10, 10, 20 ) );
+newBox.Make();
+
+Box anotherNewBox( Point( -10, -10, 30 ), Point( 10, 10, 50 ) );
+anotherNewBox.Make();"
+
+I define two objects to be in my group. When I Make() them they aren't actually
+inserted into the object file as normal, but are inserted into the group.
+
+"myNewGroup.endGroup();"
+
+I stop the recording.
+
+"myNewGroup.setTint( 1, 0, 0 );"
+
+I change the color of all the objects in the group.
+
+"myNewGroup.Make();"
+
+I make an instance of the group. You may change more groups settings and make
+another.

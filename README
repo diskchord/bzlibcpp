@@ -1,0 +1,28 @@
+BZLibC++ – Procedural Map-Builder for BZFlag
+
+BZLibC++ is a lightweight C++98 toolkit (GPL-2.0-or-later) that lets you script
+-generate BZW maps for the open-source tank game BZFlag. 
+It provides object-oriented classes for every core primitive—boxes, cones,
+pyramids, teleporters, zones, groups, and more—plus a simple “world” 
+container that writes a valid .bzw file to disk.
+
+Key points
+    Zero external dependencies – builds with any standard C++ compiler.
+    Headless automation – ideal for batch or server-side “random map” generation.
+    Example programs included – see examples/ for quick demos like googlecube.cpp.
+    Fully open-source – GPL-2.0-or-later; hack, modernize, or wrap in Python 
+                        bindings as you wish.
+
+Quick build / run
+
+./configure CXXFLAGS="-std=c++03 -Wall"
+make          # builds the library + examples
+./examples/googlecube        # writes googlecube.bzw
+bzflag -world googlecube.bzw # test it in-game
+
+Project status
+
+The code was originally written in 2005-2006 and still works with current
+BZFlag servers. Modern contributions—CMake, C++20, RAII, tests, or Python 
+bindings—are welcome!
+

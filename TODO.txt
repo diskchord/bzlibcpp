@@ -1,0 +1,14 @@
+o Fix the stupid text prefab functions. Lousy interface and a bit buggy about orientation.
+o As always, add support for more BZW features. If you are really brave and have a ton
+  of time, try to get some mesh interface working. Here's an approximate list of major
+  stuff that needs to be added:
+      - Mesh
+      - Tetrahedron
+      - World Weapons
+o Wiser dynamicColor and dynamicTexture interfaces. Please keep backward compatibility.
+  Right now you kind of require knowledge to use the interfaces. It should be easier
+  to use stuff like clampDown and clampUp without having the faintest what it looks
+  like in the map file.
+o Make an actual Face CLASS. Right now its just a typedef of MeshObject, which works
+  fine, but isn't very flexible for the future.
+o Fix what bugs I haven't fixed :)
